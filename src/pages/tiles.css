@@ -1,0 +1,57 @@
+body {
+    background-color: gray;
+}
+
+.tile-container {
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 288px;
+    border-radius: .75rem;
+    overflow: hidden;
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+
+.tile-container:hover {
+    transform: scale(1.05);
+}
+
+.tile-image {
+    order: -1;
+}
+
+.tile-text-area {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .5rem;
+    background-color: white;
+    padding: 1rem;
+}
+
+.tiles-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media (width > 512px) {
+  .tiles-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (width > 900px) {
+  .tiles-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width > 1200px) {
+  .tiles-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
