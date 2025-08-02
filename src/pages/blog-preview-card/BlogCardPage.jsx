@@ -22,13 +22,14 @@ const BlogCardPage = () => {
 
             <img src={ArticleImage} alt="card picture" className="card-image"/>
         </div>
+    
+    <div className="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://github.com/Leac1m/">Michael Obe</a>.
+    </div>
     </div>
 
   
-  <div className="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
     </>
   )
 }

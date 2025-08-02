@@ -14,25 +14,27 @@
     padding: 0;
 }
 
-.attribution { font-size: 11px; text-align: center; }
+.attribution { font-size: 11px; text-align: center;}
 .attribution a { color: hsl(228, 45%, 44%); }
 
 
 .main {
-    max-width: 1440px;
     background-color: hsl(47, 88%, 63%);
     height: 100vh;
     display: flex;
+    flex-flow: column nowrap;
+    gap: 2.5rem;
     justify-content: center;
     align-items: center;
     font-family: 'Figtree';
 }
+
 .card-container {
     display: flex;
     flex-flow: column nowrap;
     padding: 1.5rem;
     background-color: #fff;
-    width: 340px;    
+    width: 320px;
     border-radius: 1rem;
     border: 1px solid black;
     gap: 1rem;
@@ -84,8 +86,8 @@
     font-size: 14px;
     font-weight: 800;
 }
-@media (width > 1440px) {
-    .main {
-        margin: auto;
+@media (width > 500px) {
+    .card-container {
+        width: 340px;
     }
 }

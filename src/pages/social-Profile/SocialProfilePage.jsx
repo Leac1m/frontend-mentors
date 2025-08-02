@@ -21,12 +21,13 @@ const SocialProfilePage = () => {
       </div>
     </div>
   </main>
-    </div>
-  
+
   <div className="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Michael Obe</a>.
+    Coded by <a href="https://github.com/Leac1m/">Michael Obe</a>.
   </div>
+    </div>
+  
     </>
   )
 }
