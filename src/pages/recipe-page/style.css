@@ -33,6 +33,9 @@
     font-family: "Young Serif" "Outfit";
     color: var(--stone-600);
     line-height: 1.5;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
 }
 
 .recipe-main img {
@@ -42,6 +45,9 @@
 
 .text-wrapper {
     padding: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
 }
 
 .h1-header {
@@ -57,10 +63,6 @@
 .preparation h3 {
     color: var(--brown-800);
     margin: 0;
-}
-
-.page-description {
-    padding: 1rem 0;
 }
 
 ul, ol {
@@ -92,7 +94,7 @@ th, td {
     border-bottom: 1px solid var(--stone-150);
     font-weight: 400;
     text-align: left;
-    padding-left: 1rem;
+    padding: 1rem;
     width: 50%;
 }
 
@@ -129,7 +131,7 @@ li span {
     .recipe-main img {
         border-radius: 4px;
     }
-    .wrapper {
+    .text-wrapper {
         padding: 0;
     }
     

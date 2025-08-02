@@ -11,7 +11,7 @@ const RecipePage = () => {
 
         <h1 className="h1-header">Simple Omelette Recipe</h1>
     
-        <p className="page-description">An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked
+        <p>An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked
           to perfection, optionally filled with your choice of cheese, vegetables, or meats.</p>
         <div className="preparation">
           <h3>Preparation time</h3>
@@ -87,11 +87,10 @@ const RecipePage = () => {
         </table>
       </div>
 
-    </div>
-
     <div className="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="https://github.com/Leac1m/">Michael Obe</a>.
+    </div>
     </div>
   </>
   )
