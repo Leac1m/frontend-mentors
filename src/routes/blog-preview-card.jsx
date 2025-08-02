@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import BlogCardPage from '../pages/blog_preview_card/BlogCardPage'
+import BlogCardPage from '../pages/blog-preview-card/BlogCardPage'
 
-export const Route = createFileRoute('/blog_preview_card')({
+export const Route = createFileRoute('/blog-preview-card')({
   component: RouteComponent,
 })
 

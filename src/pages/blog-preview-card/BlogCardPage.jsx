@@ -16,11 +16,11 @@ const BlogCardPage = () => {
             <p className="text">These languages are the backbone of every website, defining structure, content, and presentation.</p>
           
             <div className="author">
-              <img src={AvatarImage} alt="profile picture" class="profile-pic"/>
+              <img src={AvatarImage} alt="profile picture" className="profile-pic"/>
               <span>Greg Hooper</span>
             </div>
 
-            <img src={ArticleImage} alt="card picture" class="card-image"/>
+            <img src={ArticleImage} alt="card picture" className="card-image"/>
         </div>
     </div>
 

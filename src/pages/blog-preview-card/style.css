@@ -85,7 +85,7 @@
     font-weight: 800;
 }
 @media (width > 1440px) {
-    main {
+    .main {
         margin: auto;
     }
 }

@@ -1,0 +1,136 @@
+@font-face {
+    font-family: "Young Serif";
+    src: url("assets/fonts/young-serif/YoungSerif-Regular.ttf") format("ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("assets/fonts/outfit/Outfit-VariableFont_wght.ttf") format("ttf");
+    font-weight: 400 700;
+}
+
+:root {
+    --white: hsl(0, 0%, 100%);
+    --stone-100: hsl(30, 54%, 90%);
+    --stone-150: hsl(30, 18%, 87%);
+    --stone-600: hsl(30, 10%, 34%);
+    --stone-900: hsl(24, 5%, 18%);
+
+    --brown-800: hsl(14, 45%, 36%);
+    --rose-800:  hsl(332, 51%, 32%);
+    --rose-50: hsl(330, 100%, 98%);
+
+    --base-font-size: 1rem;
+}
+
+*, *::before *::after {
+    margin: 0;
+    padding: 0;
+}
+
+.recipe-main {
+    font-family: "Young Serif" "Outfit";
+    color: var(--stone-600);
+    line-height: 1.5;
+}
+
+.recipe-main img {
+    min-height: 150px;
+    width: 100%
+}
+
+.text-wrapper {
+    padding: 1rem;
+}
+
+.h1-header {
+    line-height: 1;
+}
+
+.preparation {
+    background-color: var(--rose-50);
+    padding: 1rem;
+    border-radius: .75rem;
+}
+
+.preparation h3 {
+    color: var(--brown-800);
+    margin: 0;
+}
+
+.page-description {
+    padding: 1rem 0;
+}
+
+ul, ol {
+    margin-left: 16px;
+    padding: 0;
+    /* list-style-position: inside; */
+}
+
+li {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.h2-header {
+    color: var(--brown-800);
+}
+
+
+.divider {
+    border: 1px solid var(--stone-150);
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid var(--stone-150);
+    font-weight: 400;
+    text-align: left;
+    padding-left: 1rem;
+    width: 50%;
+}
+
+td:last-child,
+th:last-child {
+    color: var(--brown-800);
+    font-weight: 600;
+}
+
+li span {
+    font-weight: bold;
+}
+.attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media (width > 499px) {
+    body {
+        background-color: var(--stone-100);
+    }
+    .recipe-main {
+        padding: 1rem;
+        max-width: 505px;
+        border-radius: .5rem;
+        background-color: var(--white);
+        margin: 5rem auto;
+    }
+
+    .recipe-main img {
+        border-radius: 4px;
+    }
+    .wrapper {
+        padding: 0;
+    }
+    
+}

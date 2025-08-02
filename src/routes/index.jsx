@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Tiles from '../pages/Tiles'
+import Dashboard from '../pages/dashboard/Dashboard'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <Tiles />
+  return <Dashboard />
 }

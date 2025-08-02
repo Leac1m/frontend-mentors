@@ -9,18 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as Social_profileRouteImport } from './routes/social_profile'
-import { Route as Blog_preview_cardRouteImport } from './routes/blog_preview_card'
+import { Route as SocialProfileRouteImport } from './routes/social-profile'
+import { Route as RecipeRouteImport } from './routes/recipe'
+import { Route as BlogPreviewCardRouteImport } from './routes/blog-preview-card'
 import { Route as IndexRouteImport } from './routes/index'
 
-const Social_profileRoute = Social_profileRouteImport.update({
-  id: '/social_profile',
-  path: '/social_profile',
+const SocialProfileRoute = SocialProfileRouteImport.update({
+  id: '/social-profile',
+  path: '/social-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Blog_preview_cardRoute = Blog_preview_cardRouteImport.update({
-  id: '/blog_preview_card',
-  path: '/blog_preview_card',
+const RecipeRoute = RecipeRouteImport.update({
+  id: '/recipe',
+  path: '/recipe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogPreviewCardRoute = BlogPreviewCardRouteImport.update({
+  id: '/blog-preview-card',
+  path: '/blog-preview-card',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,48 +37,59 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog_preview_card': typeof Blog_preview_cardRoute
-  '/social_profile': typeof Social_profileRoute
+  '/blog-preview-card': typeof BlogPreviewCardRoute
+  '/recipe': typeof RecipeRoute
+  '/social-profile': typeof SocialProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog_preview_card': typeof Blog_preview_cardRoute
-  '/social_profile': typeof Social_profileRoute
+  '/blog-preview-card': typeof BlogPreviewCardRoute
+  '/recipe': typeof RecipeRoute
+  '/social-profile': typeof SocialProfileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog_preview_card': typeof Blog_preview_cardRoute
-  '/social_profile': typeof Social_profileRoute
+  '/blog-preview-card': typeof BlogPreviewCardRoute
+  '/recipe': typeof RecipeRoute
+  '/social-profile': typeof SocialProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog_preview_card' | '/social_profile'
+  fullPaths: '/' | '/blog-preview-card' | '/recipe' | '/social-profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog_preview_card' | '/social_profile'
-  id: '__root__' | '/' | '/blog_preview_card' | '/social_profile'
+  to: '/' | '/blog-preview-card' | '/recipe' | '/social-profile'
+  id: '__root__' | '/' | '/blog-preview-card' | '/recipe' | '/social-profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Blog_preview_cardRoute: typeof Blog_preview_cardRoute
-  Social_profileRoute: typeof Social_profileRoute
+  BlogPreviewCardRoute: typeof BlogPreviewCardRoute
+  RecipeRoute: typeof RecipeRoute
+  SocialProfileRoute: typeof SocialProfileRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/social_profile': {
-      id: '/social_profile'
-      path: '/social_profile'
-      fullPath: '/social_profile'
-      preLoaderRoute: typeof Social_profileRouteImport
+    '/social-profile': {
+      id: '/social-profile'
+      path: '/social-profile'
+      fullPath: '/social-profile'
+      preLoaderRoute: typeof SocialProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog_preview_card': {
-      id: '/blog_preview_card'
-      path: '/blog_preview_card'
-      fullPath: '/blog_preview_card'
-      preLoaderRoute: typeof Blog_preview_cardRouteImport
+    '/recipe': {
+      id: '/recipe'
+      path: '/recipe'
+      fullPath: '/recipe'
+      preLoaderRoute: typeof RecipeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog-preview-card': {
+      id: '/blog-preview-card'
+      path: '/blog-preview-card'
+      fullPath: '/blog-preview-card'
+      preLoaderRoute: typeof BlogPreviewCardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,8 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Blog_preview_cardRoute: Blog_preview_cardRoute,
-  Social_profileRoute: Social_profileRoute,
+  BlogPreviewCardRoute: BlogPreviewCardRoute,
+  RecipeRoute: RecipeRoute,
+  SocialProfileRoute: SocialProfileRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

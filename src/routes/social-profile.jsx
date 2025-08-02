@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import SocialProfilePage from '../pages/social_Profile/SocialProfilePage'
+import SocialProfilePage from '../pages/social-Profile/SocialProfilePage'
 
-export const Route = createFileRoute('/social_profile')({
+export const Route = createFileRoute('/social-profile')({
   component: RouteComponent,
 })
 
