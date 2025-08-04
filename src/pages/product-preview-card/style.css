@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("https://fonts.google.com/specimen/Montserrat");
+    font-weight: 500 700;
+}
+
+@font-face {
+    font-family: "Fraunces";
+    src: url("https://fonts.google.com/specimen/Montserrat");
+    font-weight: 700;
+}
+.product-wrapper {
+    
+}
+.product-card-main {
+    
+}
+
+.product-card-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
+    font-family: Montserrat;
+    color: var(--grey);
+    font-size: var(--base-font-size);
+}
+
+.product-card-main img {
+    width: 300px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.text-area {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.text-area h3 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: calc(var(--base-font-size) * .85);
+    letter-spacing: 3px;
+}
+
+.text-area h2 {
+    font-family: "Fraunces";
+    color: var(--black);
+}
+
+.discount-price {
+  font-family: "Fraunces";
+    color: var(--green-500);
+    font-size: calc(var(--base-font-size) * 1.5); 
+    font-weight: 700;
+}
+
+.text-area button {
+    background-color: var(--green-500);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: var(--white);
+}
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }

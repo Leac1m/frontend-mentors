@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SocialProfileRouteImport } from './routes/social-profile'
 import { Route as RecipeRouteImport } from './routes/recipe'
+import { Route as ProductPreviewCardRouteImport } from './routes/product-preview-card'
 import { Route as BlogPreviewCardRouteImport } from './routes/blog-preview-card'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const SocialProfileRoute = SocialProfileRouteImport.update({
 const RecipeRoute = RecipeRouteImport.update({
   id: '/recipe',
   path: '/recipe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductPreviewCardRoute = ProductPreviewCardRouteImport.update({
+  id: '/product-preview-card',
+  path: '/product-preview-card',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogPreviewCardRoute = BlogPreviewCardRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog-preview-card': typeof BlogPreviewCardRoute
+  '/product-preview-card': typeof ProductPreviewCardRoute
   '/recipe': typeof RecipeRoute
   '/social-profile': typeof SocialProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog-preview-card': typeof BlogPreviewCardRoute
+  '/product-preview-card': typeof ProductPreviewCardRoute
   '/recipe': typeof RecipeRoute
   '/social-profile': typeof SocialProfileRoute
 }
@@ -51,20 +59,38 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog-preview-card': typeof BlogPreviewCardRoute
+  '/product-preview-card': typeof ProductPreviewCardRoute
   '/recipe': typeof RecipeRoute
   '/social-profile': typeof SocialProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog-preview-card' | '/recipe' | '/social-profile'
+  fullPaths:
+    | '/'
+    | '/blog-preview-card'
+    | '/product-preview-card'
+    | '/recipe'
+    | '/social-profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog-preview-card' | '/recipe' | '/social-profile'
-  id: '__root__' | '/' | '/blog-preview-card' | '/recipe' | '/social-profile'
+  to:
+    | '/'
+    | '/blog-preview-card'
+    | '/product-preview-card'
+    | '/recipe'
+    | '/social-profile'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog-preview-card'
+    | '/product-preview-card'
+    | '/recipe'
+    | '/social-profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogPreviewCardRoute: typeof BlogPreviewCardRoute
+  ProductPreviewCardRoute: typeof ProductPreviewCardRoute
   RecipeRoute: typeof RecipeRoute
   SocialProfileRoute: typeof SocialProfileRoute
 }
@@ -83,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/recipe'
       fullPath: '/recipe'
       preLoaderRoute: typeof RecipeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-preview-card': {
+      id: '/product-preview-card'
+      path: '/product-preview-card'
+      fullPath: '/product-preview-card'
+      preLoaderRoute: typeof ProductPreviewCardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog-preview-card': {
@@ -105,6 +138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogPreviewCardRoute: BlogPreviewCardRoute,
+  ProductPreviewCardRoute: ProductPreviewCardRoute,
   RecipeRoute: RecipeRoute,
   SocialProfileRoute: SocialProfileRoute,
 }

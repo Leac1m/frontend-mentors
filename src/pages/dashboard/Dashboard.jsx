@@ -17,10 +17,12 @@ const Dashboard = () => {
         }, []
     )
     return (
-        <div className="tiles-container">
-            {pagesInfo.map((d, _dx) => (
-                    <Tile key={_dx} data={d}/>
-            ))}
+        <div className="dashboard-main">
+            <div className="tiles-container">
+                {pagesInfo.map((d, _dx) => (
+                        <Tile key={_dx} data={d}/>
+                ))}
+            </div>
         </div>
     )
 }
