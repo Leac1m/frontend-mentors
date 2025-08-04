@@ -8,8 +8,10 @@ const ProductCard = () => {
     <div className="product-wraper">
       <div className="product-card-main">
       <title>Frontend Mentor | Product preview card component</title>
-
-      <img src={MobileProductImage} alt="Product preview image" />
+      <picture >
+        <source className="main-img" media="(min-width: 500px)" srcset={DesktopProductImage}  />
+        <img className="main-img" src={MobileProductImage} alt="Product preview image" />
+      </picture>
       <div className="text-area">
         <h3>Perfume</h3>
 
