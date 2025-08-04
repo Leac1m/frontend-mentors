@@ -6,28 +6,40 @@
 
 @font-face {
     font-family: "Fraunces";
-    src: url("https://fonts.google.com/specimen/Montserrat");
-    font-weight: 700;
+    src: url("https://fonts.google.com/specimen/Fraunces");
+  font-weight: 700;
 }
-.product-wrapper {
-    
+
+:root {
+  --green-500: hsl(158, 36%, 37%);
+  --green-700: hsl(158, 42%, 18%);
+  --black: hsl(212, 21%, 14%);
+  --grey: hsl(228, 12%, 48%);
+  --cream: hsl(30, 38%, 92%);
+  --white: hsl(0, 0%, 100%);
 }
-.product-card-main {
-    
+
+.product-wraper {
+    background-color: var(--cream);
+    padding: 2rem 1rem;
 }
 
 .product-card-main {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    margin: 0 auto;
+    border-radius: 8px;
     font-family: Montserrat;
     color: var(--grey);
     font-size: var(--base-font-size);
+    background-color: var(--white);
+    overflow: auto;
 }
 
 .product-card-main img {
-    width: 300px;
+    /*width: 300px;*/
+    max-width: 100%;
+    height: auto;
     border-radius: 8px 8px 0px 0px;
 }
 
@@ -48,21 +60,53 @@
 .text-area h2 {
     font-family: "Fraunces";
     color: var(--black);
+    font-size: 150%;
+    font-weight: 700;
+}
+.prices {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.real-price {
+  color: var(--green-500);
+/* -webkit-text-stroke: 2px black;*/
 }
 
 .discount-price {
   font-family: "Fraunces";
-    color: var(--green-500);
-    font-size: calc(var(--base-font-size) * 1.5); 
-    font-weight: 700;
+  color: var(--green-500);
+  font-size: calc(var(--base-font-size) * 1.5);
+  font-size: 200%;
+  font-weight: bold;
 }
 
 .text-area button {
-    background-color: var(--green-500);
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    color: var(--white);
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green-500);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: var(--white);
+  font-weight: bold;
 }
-.attribution { font-size: 11px; text-align: center; }
+.attribution { 
+  font-size: 11px;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
 .attribution a { color: hsl(228, 45%, 44%); }
+
+
+@media (width > 450) {
+  .product-card-main {
+    color: blue;
+    grid-template-columns: 1fr 1fr;
+  }
+}

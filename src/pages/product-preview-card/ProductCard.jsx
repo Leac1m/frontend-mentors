@@ -1,11 +1,11 @@
 import './style.css'
 import MobileProductImage from './images/image-product-mobile.jpg'
 import DesktopProductImage from './images/image-product-desktop.jpg'
+import Cart from './images/icon-cart.svg'
 
 const ProductCard = () => {
    return (
     <div className="product-wraper">
-
       <div className="product-card-main">
       <title>Frontend Mentor | Product preview card component</title>
 
@@ -22,15 +22,13 @@ const ProductCard = () => {
           <span className="real-price">$169.99</span>
         </div>
 
-        <button>Add to Cart</button>
-
+        <button><img src={Cart} alt="cart image"></img>Add to Cart</button>
       </div>
-      
+  </div>
       <div className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        Coded by <a href="#">Your Name Here</a>.
+        Coded by <a href="#">Michael Obe</a>.
       </div>
-  </div> 
     </div>
    )
 }
