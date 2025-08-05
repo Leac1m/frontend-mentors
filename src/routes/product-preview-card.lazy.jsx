@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import ProductCard from '../pages/product-preview-card/ProductCard'
 
-export const Route = createFileRoute('/product-preview-card')({
+export const Route = createLazyFileRoute('/product-preview-card')({
   component: RouteComponent,
 })
 

@@ -8,33 +8,52 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SocialProfileRouteImport } from './routes/social-profile'
-import { Route as RecipeRouteImport } from './routes/recipe'
-import { Route as ProductPreviewCardRouteImport } from './routes/product-preview-card'
-import { Route as BlogPreviewCardRouteImport } from './routes/blog-preview-card'
 import { Route as IndexRouteImport } from './routes/index'
 
-const SocialProfileRoute = SocialProfileRouteImport.update({
+const SocialProfileLazyRouteImport = createFileRoute('/social-profile')()
+const RecipeLazyRouteImport = createFileRoute('/recipe')()
+const ProductPreviewCardLazyRouteImport = createFileRoute(
+  '/product-preview-card',
+)()
+const FourCardFeatureLazyRouteImport = createFileRoute('/four-card-feature')()
+const BlogPreviewCardLazyRouteImport = createFileRoute('/blog-preview-card')()
+
+const SocialProfileLazyRoute = SocialProfileLazyRouteImport.update({
   id: '/social-profile',
   path: '/social-profile',
   getParentRoute: () => rootRouteImport,
-} as any)
-const RecipeRoute = RecipeRouteImport.update({
+} as any).lazy(() =>
+  import('./routes/social-profile.lazy').then((d) => d.Route),
+)
+const RecipeLazyRoute = RecipeLazyRouteImport.update({
   id: '/recipe',
   path: '/recipe',
   getParentRoute: () => rootRouteImport,
-} as any)
-const ProductPreviewCardRoute = ProductPreviewCardRouteImport.update({
+} as any).lazy(() => import('./routes/recipe.lazy').then((d) => d.Route))
+const ProductPreviewCardLazyRoute = ProductPreviewCardLazyRouteImport.update({
   id: '/product-preview-card',
   path: '/product-preview-card',
   getParentRoute: () => rootRouteImport,
-} as any)
-const BlogPreviewCardRoute = BlogPreviewCardRouteImport.update({
+} as any).lazy(() =>
+  import('./routes/product-preview-card.lazy').then((d) => d.Route),
+)
+const FourCardFeatureLazyRoute = FourCardFeatureLazyRouteImport.update({
+  id: '/four-card-feature',
+  path: '/four-card-feature',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./routes/four-card-feature.lazy').then((d) => d.Route),
+)
+const BlogPreviewCardLazyRoute = BlogPreviewCardLazyRouteImport.update({
   id: '/blog-preview-card',
   path: '/blog-preview-card',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() =>
+  import('./routes/blog-preview-card.lazy').then((d) => d.Route),
+)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,31 +62,35 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog-preview-card': typeof BlogPreviewCardRoute
-  '/product-preview-card': typeof ProductPreviewCardRoute
-  '/recipe': typeof RecipeRoute
-  '/social-profile': typeof SocialProfileRoute
+  '/blog-preview-card': typeof BlogPreviewCardLazyRoute
+  '/four-card-feature': typeof FourCardFeatureLazyRoute
+  '/product-preview-card': typeof ProductPreviewCardLazyRoute
+  '/recipe': typeof RecipeLazyRoute
+  '/social-profile': typeof SocialProfileLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog-preview-card': typeof BlogPreviewCardRoute
-  '/product-preview-card': typeof ProductPreviewCardRoute
-  '/recipe': typeof RecipeRoute
-  '/social-profile': typeof SocialProfileRoute
+  '/blog-preview-card': typeof BlogPreviewCardLazyRoute
+  '/four-card-feature': typeof FourCardFeatureLazyRoute
+  '/product-preview-card': typeof ProductPreviewCardLazyRoute
+  '/recipe': typeof RecipeLazyRoute
+  '/social-profile': typeof SocialProfileLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog-preview-card': typeof BlogPreviewCardRoute
-  '/product-preview-card': typeof ProductPreviewCardRoute
-  '/recipe': typeof RecipeRoute
-  '/social-profile': typeof SocialProfileRoute
+  '/blog-preview-card': typeof BlogPreviewCardLazyRoute
+  '/four-card-feature': typeof FourCardFeatureLazyRoute
+  '/product-preview-card': typeof ProductPreviewCardLazyRoute
+  '/recipe': typeof RecipeLazyRoute
+  '/social-profile': typeof SocialProfileLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/blog-preview-card'
+    | '/four-card-feature'
     | '/product-preview-card'
     | '/recipe'
     | '/social-profile'
@@ -75,6 +98,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/blog-preview-card'
+    | '/four-card-feature'
     | '/product-preview-card'
     | '/recipe'
     | '/social-profile'
@@ -82,6 +106,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/blog-preview-card'
+    | '/four-card-feature'
     | '/product-preview-card'
     | '/recipe'
     | '/social-profile'
@@ -89,10 +114,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogPreviewCardRoute: typeof BlogPreviewCardRoute
-  ProductPreviewCardRoute: typeof ProductPreviewCardRoute
-  RecipeRoute: typeof RecipeRoute
-  SocialProfileRoute: typeof SocialProfileRoute
+  BlogPreviewCardLazyRoute: typeof BlogPreviewCardLazyRoute
+  FourCardFeatureLazyRoute: typeof FourCardFeatureLazyRoute
+  ProductPreviewCardLazyRoute: typeof ProductPreviewCardLazyRoute
+  RecipeLazyRoute: typeof RecipeLazyRoute
+  SocialProfileLazyRoute: typeof SocialProfileLazyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -101,28 +127,35 @@ declare module '@tanstack/react-router' {
       id: '/social-profile'
       path: '/social-profile'
       fullPath: '/social-profile'
-      preLoaderRoute: typeof SocialProfileRouteImport
+      preLoaderRoute: typeof SocialProfileLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recipe': {
       id: '/recipe'
       path: '/recipe'
       fullPath: '/recipe'
-      preLoaderRoute: typeof RecipeRouteImport
+      preLoaderRoute: typeof RecipeLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product-preview-card': {
       id: '/product-preview-card'
       path: '/product-preview-card'
       fullPath: '/product-preview-card'
-      preLoaderRoute: typeof ProductPreviewCardRouteImport
+      preLoaderRoute: typeof ProductPreviewCardLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/four-card-feature': {
+      id: '/four-card-feature'
+      path: '/four-card-feature'
+      fullPath: '/four-card-feature'
+      preLoaderRoute: typeof FourCardFeatureLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog-preview-card': {
       id: '/blog-preview-card'
       path: '/blog-preview-card'
       fullPath: '/blog-preview-card'
-      preLoaderRoute: typeof BlogPreviewCardRouteImport
+      preLoaderRoute: typeof BlogPreviewCardLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -137,10 +170,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogPreviewCardRoute: BlogPreviewCardRoute,
-  ProductPreviewCardRoute: ProductPreviewCardRoute,
-  RecipeRoute: RecipeRoute,
-  SocialProfileRoute: SocialProfileRoute,
+  BlogPreviewCardLazyRoute: BlogPreviewCardLazyRoute,
+  FourCardFeatureLazyRoute: FourCardFeatureLazyRoute,
+  ProductPreviewCardLazyRoute: ProductPreviewCardLazyRoute,
+  RecipeLazyRoute: RecipeLazyRoute,
+  SocialProfileLazyRoute: SocialProfileLazyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,688;1,9..144,688&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+    --grey-500: hsl(234, 12%, 34%);
+    --grey-400: hsl(212, 6%, 44%);
+    --white: hsl(0, 0%, 100%);
+    --base-font-size: 15px;
+}
+
+.page-wrapper {
+    font-family: "Poppins";
+    font-size: var(--base-font-size);
+    padding: 2rem;
+    text-align: center;
+    color: var(--grey-400);
+}
+
+.page-wrapper h1 {
+    color: var(--grey-500);
+    font-size: 155%;
+}
+
+.page-wrapper h2 {
+    font-weight: normal;
+}
+.page-description {
+    margin: 2rem 0;
+}
+
+.cards-container {
+    display: grid;
+    row-gap: 2rem;
+}
+
+.card-container {
+    text-align: left;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
+    row-gap: 2rem;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    background: var(--white);
+}
+
+.text {
+    grid-column: 1/3;
+}
+
+.text h1 {
+    color: var(--grey-500);
+}
+
+.card-name {
+    font-weight: 600;
+    font-size: 140%;
+}
+
+.card-description {
+    font-size: 90%;
+}
+
+.card-container img {
+    grid-column: 2/3;
+}
+
+.red {
+    border-top: 4px solid var(--red);
+}
+
+.orange {
+    border-top: 4px solid var(--orange);
+}
+
+.blue {
+    border-top: 4px solid var(--blue);
+}
+
+.cyan {
+    border-top: 4px solid var(--cyan);
+}
+
+@media (min-width: 700px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        column-gap: 1rem;
+        max-width: 1440px;
+        margin: auto;
+    }
+
+    .red {
+        grid-column: 2/3;
+        grid-row: 1/3;
+    }
+
+    .orange {
+        grid-column: 2/3;
+        grid-row: 3/5;
+    }
+
+    .cyan {
+        grid-column: 1/2;
+        grid-row: 2/4;
+    }
+
+    .blue {
+        grid-column: 3/4;
+        grid-row: 2/4;
+    }
+}
