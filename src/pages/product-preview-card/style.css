@@ -27,7 +27,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .product-card-main {
@@ -73,8 +72,9 @@
   align-items: center;
   gap: 1rem;
 }
+
 .real-price {
-text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .discount-price {
@@ -108,6 +108,10 @@ text-decoration: line-through;
 
 
 @media (min-width: 500px) {
+  .product-wraper {
+    height: 100vh;
+  }
+
   .product-card-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
