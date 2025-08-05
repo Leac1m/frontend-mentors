@@ -13,6 +13,9 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TestimonialGridSectionLazyRouteImport = createFileRoute(
+  '/testimonial-grid-section',
+)()
 const SocialProfileLazyRouteImport = createFileRoute('/social-profile')()
 const RecipeLazyRouteImport = createFileRoute('/recipe')()
 const ProductPreviewCardLazyRouteImport = createFileRoute(
@@ -21,6 +24,14 @@ const ProductPreviewCardLazyRouteImport = createFileRoute(
 const FourCardFeatureLazyRouteImport = createFileRoute('/four-card-feature')()
 const BlogPreviewCardLazyRouteImport = createFileRoute('/blog-preview-card')()
 
+const TestimonialGridSectionLazyRoute =
+  TestimonialGridSectionLazyRouteImport.update({
+    id: '/testimonial-grid-section',
+    path: '/testimonial-grid-section',
+    getParentRoute: () => rootRouteImport,
+  } as any).lazy(() =>
+    import('./routes/testimonial-grid-section.lazy').then((d) => d.Route),
+  )
 const SocialProfileLazyRoute = SocialProfileLazyRouteImport.update({
   id: '/social-profile',
   path: '/social-profile',
@@ -67,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/product-preview-card': typeof ProductPreviewCardLazyRoute
   '/recipe': typeof RecipeLazyRoute
   '/social-profile': typeof SocialProfileLazyRoute
+  '/testimonial-grid-section': typeof TestimonialGridSectionLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -75,6 +87,7 @@ export interface FileRoutesByTo {
   '/product-preview-card': typeof ProductPreviewCardLazyRoute
   '/recipe': typeof RecipeLazyRoute
   '/social-profile': typeof SocialProfileLazyRoute
+  '/testimonial-grid-section': typeof TestimonialGridSectionLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -84,6 +97,7 @@ export interface FileRoutesById {
   '/product-preview-card': typeof ProductPreviewCardLazyRoute
   '/recipe': typeof RecipeLazyRoute
   '/social-profile': typeof SocialProfileLazyRoute
+  '/testimonial-grid-section': typeof TestimonialGridSectionLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -94,6 +108,7 @@ export interface FileRouteTypes {
     | '/product-preview-card'
     | '/recipe'
     | '/social-profile'
+    | '/testimonial-grid-section'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -102,6 +117,7 @@ export interface FileRouteTypes {
     | '/product-preview-card'
     | '/recipe'
     | '/social-profile'
+    | '/testimonial-grid-section'
   id:
     | '__root__'
     | '/'
@@ -110,6 +126,7 @@ export interface FileRouteTypes {
     | '/product-preview-card'
     | '/recipe'
     | '/social-profile'
+    | '/testimonial-grid-section'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,10 +136,18 @@ export interface RootRouteChildren {
   ProductPreviewCardLazyRoute: typeof ProductPreviewCardLazyRoute
   RecipeLazyRoute: typeof RecipeLazyRoute
   SocialProfileLazyRoute: typeof SocialProfileLazyRoute
+  TestimonialGridSectionLazyRoute: typeof TestimonialGridSectionLazyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonial-grid-section': {
+      id: '/testimonial-grid-section'
+      path: '/testimonial-grid-section'
+      fullPath: '/testimonial-grid-section'
+      preLoaderRoute: typeof TestimonialGridSectionLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/social-profile': {
       id: '/social-profile'
       path: '/social-profile'
@@ -175,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductPreviewCardLazyRoute: ProductPreviewCardLazyRoute,
   RecipeLazyRoute: RecipeLazyRoute,
   SocialProfileLazyRoute: SocialProfileLazyRoute,
+  TestimonialGridSectionLazyRoute: TestimonialGridSectionLazyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

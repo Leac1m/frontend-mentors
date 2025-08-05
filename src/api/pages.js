@@ -3,6 +3,7 @@ import SocailImage from '../pages/social-Profile/preview.jpg'
 import BlogImage from '../pages/blog-preview-card/preview.jpg'
 import ProductPreviewImage from '../pages/product-preview-card/design/desktop-preview.jpg'
 import FourCardFeatureImage from '../pages/four-card-feature-section-master/design/desktop-preview.jpg'
+import TestimonialGridImage from '../pages/testimonials-grid-section-main/preview.jpg'
 
 const pagesInfo = [{
         name: "Blog Post",
@@ -37,6 +38,12 @@ const pagesInfo = [{
         description: "Short Descript",
         imageUrl: FourCardFeatureImage,
         pathUrl: '/four-card-feature'
+    },
+    {
+        name: "testimonials card",
+        description: "Short Descript",
+        imageUrl: TestimonialGridImage,
+        pathUrl: '/testimonial-grid-section'
     }
 ]
 
