@@ -17,6 +17,7 @@
   --grey: hsl(228, 12%, 48%);
   --cream: hsl(30, 38%, 92%);
   --white: hsl(0, 0%, 100%);
+  --base-font-size: clamp(1rem, 0.8rem + 1vw, 1.32rem);
 }
 
 .product-wraper {
@@ -25,27 +26,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
 .product-card-main {
     display: flex;
-    /* grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr; */
-    flex-flow: column nowrap;
     border-radius: 8px;
     font-family: Montserrat;
     color: var(--grey);
     font-size: var(--base-font-size);
     background-color: var(--white);
+    flex-flow: column nowrap;
+    min-width: 300px;
     overflow: hidden;
 }
 
 .product-card-main .main-img {
-    /*width: 300px;*/
     max-width: 100%;
     height: auto;
-    border-radius: 8px 8px 0px 0px;
 }
 
 .text-area {
@@ -58,14 +57,14 @@
 .text-area h3 {
     text-transform: uppercase;
     font-weight: 400;
-    font-size: calc(var(--base-font-size) * .85);
+    font-size: calc(var(--base-font-size) * 1.1);
     letter-spacing: 3px;
 }
 
 .text-area h2 {
     font-family: "Fraunces";
     color: var(--black);
-    font-size: 180%;
+    font-size: calc(var(--base-font-size) * 2);
     font-weight: 700;
 }
 .prices {
@@ -95,7 +94,7 @@ text-decoration: line-through;
   background-color: var(--green-500);
   border: none;
   border-radius: 8px;
-  padding: 16px;
+  padding: var(--base-font-size);
   color: var(--white);
   font-weight: bold;
 }
@@ -110,10 +109,12 @@ text-decoration: line-through;
 
 @media (min-width: 500px) {
   .product-card-main {
-
-    flex-flow: row nowrap;
-    /* max-width: 560px; */
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin: 5rem auto;
+    max-width: 700px;
+    border-radius: 8px;
   }
 
   .product-card-main .main-img {
@@ -122,13 +123,7 @@ text-decoration: line-through;
   }
   .text-area {
     flex-basis: 50%;
+    gap: var(--base-font-size);
+    margin: auto 0;
   }
 }
-
-
-/* @media (min-width: 560px) {
-  .product-card-main {
-    
-  }
-
-} */
