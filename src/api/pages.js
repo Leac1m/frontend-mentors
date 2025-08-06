@@ -4,6 +4,7 @@ import BlogImage from '../pages/blog-preview-card/preview.jpg'
 import ProductPreviewImage from '../pages/product-preview-card/design/desktop-preview.jpg'
 import FourCardFeatureImage from '../pages/four-card-feature-section-master/design/desktop-preview.jpg'
 import TestimonialGridImage from '../pages/testimonials-grid-section-main/preview.jpg'
+import ClipBorderImage from '../pages/clipboard-landing-page-master/design/desktop-design.jpg'
 
 const pagesInfo = [{
         name: "Blog Post",
@@ -44,6 +45,12 @@ const pagesInfo = [{
         description: "Short Descript",
         imageUrl: TestimonialGridImage,
         pathUrl: '/testimonial-grid-section'
+    },
+    {   
+        name: "Clipboard page",
+        description: "Short Descript",
+        imageUrl: ClipBorderImage,
+        pathUrl: '/clipborder-landing-page'
     }
 ]
 
