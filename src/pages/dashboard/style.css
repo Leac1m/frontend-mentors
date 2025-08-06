@@ -20,6 +20,10 @@
 
 .tile-image {
     order: -1;
+    max-height: 220px;
+    object-position: top;
+    object-fit: cover;
+    width: 100%;
 }
 
 .tile-text-area {
