@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;400;600&display=swap');
+
+@layer base {
+    :root {
+        --base-font-side: 18px;
+        --green-500: hsl(171, 66%, 44%);
+        --blue-100: hsl(233, 100%, 69%);
+        --gray-700: hsl(210, 10%, 33%);
+        --gray-500: hsl(201, 11%, 66%);
+        
+    }
+    
+    
+    .main-wrapper {
+        font-family: "Bai Jamjuree", sans-serif;
+        font-size: var(--base-font-side);
+        margin-inline: 1rem;
+        color: var(--gray-500);
+    }
+}
+
+
+.hero {
+    background-image: url(./images/bg-header-mobile.png);
+    object-fit: cover;
+    text-align: center;
+}
+
+.header-h1,
+    .header-h2, .header-h3 
+    {
+        color: var(--gray-700);
+        margin-block: 1em;
+        /* font-size: 200%; */
+}
+
+.header-h1 {
+    font-size: 200%;
+}
+
+.header-h2 {
+    font-size: 180%;
+}
+
+.header-h3 {
+    font-size: 150%;
+}
+
+.text {
+    margin-block: 1em;
+}
+
+.section {
+    --section-border-bottom: 4rem;
+    text-align: center;
+    padding-inline: var(--section-padding, 2rem);
+    padding-block: 3rem;
+    color: var(--gray-500);
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.section
+:not(:last-child) {
+    --section-border-bottom: 0;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1rem;
+    margin-top: 3rem;
+
+    .button {
+        padding-block: 12px;
+        border-radius: 20px;
+        border: none;
+        color: white;
+        background-color: var(--green-500);
+    }
+
+    .btn-sec {
+        background-color: var(--blue-100);
+    }
+
+    @media (min-width: 760px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        gap: 1rem;
+    }
+}
+
+.icon-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 4rem;
+}
+
+.grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 2rem;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 2rem;
+}
+
+/*footer section */
+footer {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    background-color: var(--gray-500);
+    
+    a {
+        text-decoration: none;
+        color: var(--gray-700);
+    }
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.links {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+}
+
+
+@media (min-width: 760px) {
+    .hero {
+        background-image: url(./images/bg-header-desktop.png);
+        text-align: center;
+    }
+    .section {
+        --section-border-bottom: 5rem;
+        --section-padding: 4rem;
+
+        &[section-padding] {
+            --section-padding: 8rem;
+        }
+    }
+
+    .section
+    :not(:last-child) {
+        --section-border-bottom: 0;
+    }
+
+    .buttons {
+        width: 50%;
+        margin-inline: auto;
+    }
+    .icon-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        grid-template-rows: 1fr;
+    }
+
+    .content-container {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        justify-items: left;
+        column-gap: 4rem;
+        row-gap: 2rem;
+
+        img {
+            grid-column: 1/2;
+            grid-row: 1/6;
+        }
+
+        .one {
+            grid-column: 2/3;
+            grid-row: 2/3;
+        }
+
+        .two {
+            grid-column: 2/3;
+            grid-row: 3/4;
+        }
+
+        .three {
+            grid-column: 2/3;
+            grid-row: 4/5;
+        }
+
+        .header {
+            text-align: left;
+        }
+    }
+
+    .section--left-padding {
+        padding-left: 0;
+        align-items: left;
+
+        .header {
+            padding-inline-start: var(--section-padding);
+        }
+
+        img {
+            transform: translateX(-10%);
+            /* max-width: none; */
+        }
+
+        .text-container {
+            .header-h3 {
+                margin-block: 0;
+                text-align: left;
+            }
+    
+            .text {
+                margin-block: 0;
+                text-align: left;
+            }
+        }
+    }
+
+    footer {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .links {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-self: left;
+        justify-items: left;
+    }
+}
