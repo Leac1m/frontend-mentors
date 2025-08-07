@@ -12,6 +12,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClipborderLandingPageRouteImport } from './routes/clipborder-landing-page'
+import { Route as BrowserExtensionRouteImport } from './routes/browser-extension'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TestimonialGridSectionLazyRouteImport = createFileRoute(
@@ -71,6 +72,11 @@ const ClipborderLandingPageRoute = ClipborderLandingPageRouteImport.update({
   path: '/clipborder-landing-page',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrowserExtensionRoute = BrowserExtensionRouteImport.update({
+  id: '/browser-extension',
+  path: '/browser-extension',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -79,6 +85,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/browser-extension': typeof BrowserExtensionRoute
   '/clipborder-landing-page': typeof ClipborderLandingPageRoute
   '/blog-preview-card': typeof BlogPreviewCardLazyRoute
   '/four-card-feature': typeof FourCardFeatureLazyRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/browser-extension': typeof BrowserExtensionRoute
   '/clipborder-landing-page': typeof ClipborderLandingPageRoute
   '/blog-preview-card': typeof BlogPreviewCardLazyRoute
   '/four-card-feature': typeof FourCardFeatureLazyRoute
@@ -100,6 +108,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/browser-extension': typeof BrowserExtensionRoute
   '/clipborder-landing-page': typeof ClipborderLandingPageRoute
   '/blog-preview-card': typeof BlogPreviewCardLazyRoute
   '/four-card-feature': typeof FourCardFeatureLazyRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/browser-extension'
     | '/clipborder-landing-page'
     | '/blog-preview-card'
     | '/four-card-feature'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/browser-extension'
     | '/clipborder-landing-page'
     | '/blog-preview-card'
     | '/four-card-feature'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/browser-extension'
     | '/clipborder-landing-page'
     | '/blog-preview-card'
     | '/four-card-feature'
@@ -143,6 +155,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BrowserExtensionRoute: typeof BrowserExtensionRoute
   ClipborderLandingPageRoute: typeof ClipborderLandingPageRoute
   BlogPreviewCardLazyRoute: typeof BlogPreviewCardLazyRoute
   FourCardFeatureLazyRoute: typeof FourCardFeatureLazyRoute
@@ -203,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClipborderLandingPageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/browser-extension': {
+      id: '/browser-extension'
+      path: '/browser-extension'
+      fullPath: '/browser-extension'
+      preLoaderRoute: typeof BrowserExtensionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -215,6 +235,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BrowserExtensionRoute: BrowserExtensionRoute,
   ClipborderLandingPageRoute: ClipborderLandingPageRoute,
   BlogPreviewCardLazyRoute: BlogPreviewCardLazyRoute,
   FourCardFeatureLazyRoute: FourCardFeatureLazyRoute,
