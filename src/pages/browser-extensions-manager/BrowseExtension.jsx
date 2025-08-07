@@ -10,9 +10,13 @@ import Moon from './assets/images/icon-moon.svg'
 
 const BrowseExtension = () => {
   const [data, setData] = useState(JsonData);
-  const [theme, setTheme] = useState("night");
+  const [theme, setTheme] = useState("light");
   console.log(data)
 
+  const toggleTheme = () => {
+    const newTheme = (theme === "light") ? "dark" : "light";
+    setTheme(newTheme);
+  }
   const setIsActive = (logo, bool) => {
     setData(data.map(d => {
       return (d.logo == logo) ? {
@@ -30,12 +34,12 @@ const BrowseExtension = () => {
     }))
   }
   return (
-    <div className='main'>
+    <div className='main' theme={theme}>
       <div className="wrapper">
         <div className="header">
           <img src={Logo} alt="" />
-          <div className="theme-icon">
-            {(theme === "night") ? (<img src={Sun} alt=""/>) : (<img src={Moon} alt=""/>)}
+          <div className="theme-icon" onClick={toggleTheme}>
+            <img src={(theme === "dark") ? Sun : Moon} alt=""/>
           </div>
         </div>
         <div className="sub-header">

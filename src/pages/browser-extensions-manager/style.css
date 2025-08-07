@@ -21,17 +21,43 @@
     --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
     --border-radius: 8px;
     --padding: 16px;
-
+    
+    
+    --light-bg: var(--neutral-0);
+    --light-bg-color: var(--neutral-100);
+    --ligth-text: var(--neutral-800);
+    --ligth-text-accent: var(--neutral-700);
+    
+    --dark-bg: var(--neutral-800);
+    --dark-bg-color: var(--neutral-800);
+    --dark-text-color: var(--neutral-0);
+    --dark-text-color-accent: var(--neutral-700);
     --font-family: "Noto Sans"
 }
 
 
 .main {
+  /*
+    --bg-gradient;
+    --bg-color;
+    --bg-color-accent;
+    --text-color;
+    --text-color-accent;
+    */
     font-family: var(--font-family);
-    background: var(--dark-gradient);
-    color: var(--neutral-0);
+    background: var(--bg-gradient, var(--dark-gradient));
+    color: var(--text-color, var(--dark-text-color));
     padding-block: 2rem 5rem;
     padding-inline: var(--padding);
+    
+    &[theme="light"] {
+      --bg-gradient: var(--light-gradient);
+      --text-color: var(--ligth-text);
+      --text-color-accent: var(--ligth-text-accent);
+      --bg-color-accent: var(--ligth-text-accent);
+      --bg-color: var(--light-bg);
+      --theme-icon-color: var(--neutral-100)
+    }
     
 }
 
@@ -65,13 +91,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--neutral-800);
+    background-color: var(--bg-color, var(--dark-bg-color));
     padding: 4px;
     border-radius: 8px;
 }
 
 .theme-icon {
-    background-color: var(--neutral-700);
+    background-color: var(--theme-icon-color, var(--neutral-700));
     padding: 8px;
     border-radius: 8px;
 }
@@ -88,7 +114,7 @@
     padding-inline: var(--padding);
     padding-block: 6px;
     border-radius: 16px;
-    background-color: var(--theme-bg, var(--neutral-800)); 
+    background-color: var(--bg-color, var(--dark-bg-color));
 }
 
 .selected-filter-tab {
@@ -119,7 +145,8 @@
     gap: 12px;
     padding: var(--padding);
     border-radius: var(--border-radius);
-    background-color: var(--neutral-800);
+    background-color: var(--bg-color, var(--dark-bg-color));
+    background-color: var(--bg-color, var(--dark-bg-color));
     border: 1px solid var(--neutral-300);
 }
 
@@ -135,7 +162,7 @@
 }
 
 .card-description {
-    color: var(--neutral-300);
+    color: var(--text-color-accent, var(--dark-text-color-accent));
     font-size: 90%;
     grid-column: 2/3;
     grid-row: 2/3;
@@ -150,8 +177,8 @@
     padding-inline: var(--padding);
     padding-block: 2px;
     border-radius: 16px;
-    background-color: var(--neutral-800);
-    color: var(--neutral-0);
+    background-color: var(--bg-color, var(--dark-bg-color));
+    color: var(--text-color, var(--dark-text));
     border: 1px solid var(--neutral-100);
 }
 
