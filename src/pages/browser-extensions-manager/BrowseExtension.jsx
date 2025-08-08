@@ -65,6 +65,7 @@ const BrowseExtension = () => {
 }
 
 function Card({
+  logo,
   name,
   description,
   image,
@@ -72,6 +73,9 @@ function Card({
   onRemove,
   setIsActive,
 }) {
+  const toggleIsActive = () => {
+    setIsActive(logo, !isActive);
+  }
   return (
     <div className="card">
       <img src={image} className="card-image" alt="Extension Logo" />
@@ -81,9 +85,9 @@ function Card({
       </p>
 
       <div className="card-funtions">
-        <div className='remove'>remove</div>
+        <div className='remove' onClick={() => onRemove(logo)}>remove</div>
 
-        <div className="switch">
+        <div className="switch" onClick={toggleIsActive}>
           {isActive ? (<>As</>) : (<>Da</>)}
         </div>
       </div>
