@@ -31,7 +31,7 @@
     --dark-bg: var(--neutral-800);
     --dark-bg-color: var(--neutral-800);
     --dark-text-color: var(--neutral-0);
-    --dark-text-color-accent: var(--neutral-700);
+    --dark-text-color-accent: var(--neutral-300);
     --font-family: "Noto Sans"
 }
 
@@ -146,7 +146,6 @@
     padding: var(--padding);
     border-radius: var(--border-radius);
     background-color: var(--bg-color, var(--dark-bg-color));
-    background-color: var(--bg-color, var(--dark-bg-color));
     border: 1px solid var(--neutral-300);
 }
 
@@ -173,6 +172,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .remove {
     padding-inline: var(--padding);
     padding-block: 2px;
@@ -187,9 +187,4 @@
     background-color: var(--neutral-800);
     color: var(--neutral-0);
 }
-
-/*
-.switch {
-    justify-self: right;
-} */
 
