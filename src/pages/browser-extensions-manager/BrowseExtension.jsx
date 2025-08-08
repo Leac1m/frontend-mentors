@@ -12,7 +12,13 @@ import RSwitch from "react-switch"
 const BrowseExtension = () => {
   const [data, setData] = useState(JsonData);
   const [theme, setTheme] = useState("light");
-  console.log(data)
+  const [filterOption, setFilterOption] = useState(null);
+  const filters = {
+    all: null,
+    activated: true,
+    deactivated: false
+  }
+  const filteredData = data.filter(d =>  filterOption === filters.all || filterOption === d.isActive);
 
   const toggleTheme = () => {
     const newTheme = (theme === "light") ? "dark" : "light";
@@ -34,6 +40,7 @@ const BrowseExtension = () => {
       return (d.logo !== logo)
     }))
   }
+  
   return (
     <div className='main' theme={theme}>
       <div className="wrapper">
@@ -47,14 +54,14 @@ const BrowseExtension = () => {
           <h1>Extensions List</h1>
 
           <div className="filters">
-            <div className="filter-tab selected-filter-tab">All</div>
-            <div className="filter-tab">Active</div>
-            <div className="filter-tab">Inactive</div>
+            <div className="filter-tab selected-filter-tab" onClick={() => setFilterOption(filters.all) }>All</div>
+            <div className="filter-tab" onClick={() => setFilterOption(filters.activated) } >Active</div>
+            <div className="filter-tab" onClick={() => setFilterOption(filters.deactivated)}>Inactive</div>
           </div>
         </div>
         <div className="card-container">
-          {
-            data.map((d) => (
+          { 
+            filteredData.map((d) => (
               <Card  key={d.logo} name={d.name} logo={d.logo} description={d.description} isActive={d.isActive} onRemove={onRemove} setIsActive={setIsActive}/>
 
             ))
