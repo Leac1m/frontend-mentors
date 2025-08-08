@@ -6,6 +6,7 @@ import Logo from './assets/images/logo.svg'
 import Sun from './assets/images/icon-sun.svg'
 import Moon from './assets/images/icon-moon.svg'
 
+import RSwitch from "react-switch"
 
 
 const BrowseExtension = () => {
@@ -87,11 +88,37 @@ function Card({
       <div className="card-funtions">
         <div className='remove' onClick={() => onRemove(logo)}>remove</div>
 
-        <div className="switch" onClick={toggleIsActive}>
-          {isActive ? (<>As</>) : (<>Da</>)}
+        <div className="switch">
+          <Switch isCheck={isActive} handleChange={toggleIsActive}/>
         </div>
       </div>
     </div>
   )
+}
+
+
+const Switch = ({ isCheck, handleChange }) => {
+
+/*  const handleChange = () => {
+    setIsCheck(!isCheck);
+  }*/
+
+  return (
+          <RSwitch
+            checked={isCheck}
+            onChange={handleChange}
+            onColor="#86d3ff"
+            onHandleColor="#2693e6"
+            handleDiameter={30}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+            activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+            height={20}
+            width={48}
+            className="react-switch"
+            id="material-switch"
+          />
+    )
 }
 export default BrowseExtension
