@@ -44,6 +44,7 @@
     --text-color;
     --text-color-accent;
     */
+    height: 100vh;
     font-family: var(--font-family);
     background: var(--bg-gradient, var(--dark-gradient));
     color: var(--text-color, var(--dark-text-color));
@@ -92,14 +93,20 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--bg-color, var(--dark-bg-color));
-    padding: 4px;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.logo {
+    color: var(--neutral-0);
 }
 
 .theme-icon {
     background-color: var(--theme-icon-color, var(--neutral-700));
     padding: 8px;
     border-radius: 8px;
+    margin: 4px;
+    display: flex;
 }
 
 /* filters */
@@ -111,15 +118,27 @@
 }
 
 .filter-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-inline: var(--padding);
-    padding-block: 6px;
     border-radius: 16px;
     background-color: var(--bg-color, var(--dark-bg-color));
+
+    &:hover {
+        background-color: var(--neutral-100);
+        color: var(--neutral-600);
+    }
 }
 
 .selected-filter-tab {
     background-color: var(--red-700);
-    color: var(--neutral-900);
+    color: var(--neutral-0);
+
+    &:hover {
+        background-color: var(--red-500);
+        color: var(--neutral-100);
+    }
 }
 
 /* Card */
@@ -180,6 +199,11 @@
     background-color: var(--bg-color, var(--dark-bg-color));
     color: var(--text-color, var(--dark-text));
     border: 1px solid var(--neutral-100);
+}
+
+.remove:hover {
+    background-color:  var(--hover-state, var(--red-700));
+    color: var(--neutral-0);
 }
 
 /* utilite class */
