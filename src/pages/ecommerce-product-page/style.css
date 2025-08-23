@@ -1,5 +1,8 @@
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+@font-face {
+    font-family: "Kumbh Sans";
+    src: url('./Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf');
+    font-weight: 400 700;
+}
 
 :root {
     --orange-500: hsl(26, 100%, 55%);
@@ -18,29 +21,23 @@
 }
 
 /* Navigation */
-nav {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     padding: 2rem;
     border-bottom: 1px solid var(--blue-300);
+    font-family: "Kumbh Sans";
 }
 
-nav .left {
+header .left {
     display: flex;
     flex-flow: row wrap;
     gap: 2rem;
 }
 
-nav ul {
-    display: flex;
-    flex-flow: row wrap;
-    list-style-type: none;
-    gap: 1.5rem;
-}
-
-nav .right {
+header .right {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -51,8 +48,51 @@ nav .right {
     }
 }
 
+nav {
+    .close-nav {
+            display: none;
+            /* margin-bottom: 2rem; */
+    }
+
+
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        list-style-type: none;
+        gap: 1.5rem;
+    }
+
+    
+
+    @media (width < 760px) {
+        background-color: var(--neutral-0);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60%;
+        height: 100vh;
+        padding: 1.5rem;
+        font-weight: bold;
+        font-size: 120%;
+
+        .close-nav {
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        ul {
+            flex-flow: column nowrap;
+        }
+
+    }
+
+
+}
+
+
 .product-details {
     padding: 1rem;
+    font-family: "Kumbh Sans";
 }
 
 .buttons {

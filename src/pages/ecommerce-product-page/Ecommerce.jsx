@@ -7,25 +7,31 @@ const Ecommerce = () => {
     <div>
       <title>Frontend Mentor | E-commerce product page</title>
 
-      <nav>
-        <div className="left">
-          <div className="logo">
-              <img src={Logo} alt="" />
-          </div>
-          <ul>
-            <li>Collections</li>
-            <li>Men</li>
-            <li>Women</li>
-            <li>About</li>
-            <li>Contact</li>
-          </ul>
-        </div>
+      <header>
+          <div className="left">
+            <div className="hamburger">
+              <img src={importImg('./images/icon-menu.svg')} alt="" />
+            </div>
+            <div className="logo">
+                <img src={Logo} alt="" />
+            </div>
+            <nav>
+                <img className='close-nav' src={importImg('./images/icon-close.svg')} alt="" />
+                <ul>
+                  <li>Collections</li>
+                  <li>Men</li>
+                  <li>Women</li>
+                  <li>About</li>
+                  <li>Contact</li>
+                </ul>
 
-        <div className='right'>
-          <img className="cart" src={importImg('./images/icon-cart.svg')} alt='cart'></img>
-          <img className="profile" src={importImg('./images/image-avatar.png')}></img>
-        </div>
-      </nav>
+            </nav>
+          </div>
+              <div className='right'>
+                <img className="cart" src={importImg('./images/icon-cart.svg')} alt='cart'></img>
+                <img className="profile" src={importImg('./images/image-avatar.png')}></img>
+              </div>
+      </header>
 
       <section className='section'>
         <div className="product-images">
