@@ -6,6 +6,11 @@ import FourCardFeatureImage from '../pages/four-card-feature-section-master/desi
 import TestimonialGridImage from '../pages/testimonials-grid-section-main/preview.jpg'
 import ClipBorderImage from '../pages/clipboard-landing-page-master/design/desktop-design.jpg'
 import ExtensionImage from '../pages/browser-extensions-manager/preview.jpg'
+// src/pages/ecommerce-product-page/design/desktop-preview.jpg
+
+const importImg = (name) => {
+    return new URL(`../pages/${name}.jpg`,  import.meta.url).href
+}
 
 const pagesInfo = [{
         name: "Blog Post",
@@ -58,6 +63,12 @@ const pagesInfo = [{
         description: "Short Descript",
         imageUrl: ExtensionImage,
         pathUrl: '/browser-extension'
+    },
+    {   
+        name: "Eccommerce",
+        description: "Short Descript",
+        imageUrl: importImg('ecommerce-product-page/design/desktop-preview.jpg'),
+        pathUrl: '/ecommerce-product-page'
     }
     // /browser-extension'
 ]

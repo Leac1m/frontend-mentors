@@ -24,6 +24,9 @@ const ProductPreviewCardLazyRouteImport = createFileRoute(
   '/product-preview-card',
 )()
 const FourCardFeatureLazyRouteImport = createFileRoute('/four-card-feature')()
+const EcommerceProductPageLazyRouteImport = createFileRoute(
+  '/ecommerce-product-page',
+)()
 const BlogPreviewCardLazyRouteImport = createFileRoute('/blog-preview-card')()
 
 const TestimonialGridSectionLazyRoute =
@@ -60,6 +63,14 @@ const FourCardFeatureLazyRoute = FourCardFeatureLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/four-card-feature.lazy').then((d) => d.Route),
 )
+const EcommerceProductPageLazyRoute =
+  EcommerceProductPageLazyRouteImport.update({
+    id: '/ecommerce-product-page',
+    path: '/ecommerce-product-page',
+    getParentRoute: () => rootRouteImport,
+  } as any).lazy(() =>
+    import('./routes/ecommerce-product-page.lazy').then((d) => d.Route),
+  )
 const BlogPreviewCardLazyRoute = BlogPreviewCardLazyRouteImport.update({
   id: '/blog-preview-card',
   path: '/blog-preview-card',
@@ -88,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/browser-extension': typeof BrowserExtensionRoute
   '/clipborder-landing-page': typeof ClipborderLandingPageRoute
   '/blog-preview-card': typeof BlogPreviewCardLazyRoute
+  '/ecommerce-product-page': typeof EcommerceProductPageLazyRoute
   '/four-card-feature': typeof FourCardFeatureLazyRoute
   '/product-preview-card': typeof ProductPreviewCardLazyRoute
   '/recipe': typeof RecipeLazyRoute
@@ -99,6 +111,7 @@ export interface FileRoutesByTo {
   '/browser-extension': typeof BrowserExtensionRoute
   '/clipborder-landing-page': typeof ClipborderLandingPageRoute
   '/blog-preview-card': typeof BlogPreviewCardLazyRoute
+  '/ecommerce-product-page': typeof EcommerceProductPageLazyRoute
   '/four-card-feature': typeof FourCardFeatureLazyRoute
   '/product-preview-card': typeof ProductPreviewCardLazyRoute
   '/recipe': typeof RecipeLazyRoute
@@ -111,6 +124,7 @@ export interface FileRoutesById {
   '/browser-extension': typeof BrowserExtensionRoute
   '/clipborder-landing-page': typeof ClipborderLandingPageRoute
   '/blog-preview-card': typeof BlogPreviewCardLazyRoute
+  '/ecommerce-product-page': typeof EcommerceProductPageLazyRoute
   '/four-card-feature': typeof FourCardFeatureLazyRoute
   '/product-preview-card': typeof ProductPreviewCardLazyRoute
   '/recipe': typeof RecipeLazyRoute
@@ -124,6 +138,7 @@ export interface FileRouteTypes {
     | '/browser-extension'
     | '/clipborder-landing-page'
     | '/blog-preview-card'
+    | '/ecommerce-product-page'
     | '/four-card-feature'
     | '/product-preview-card'
     | '/recipe'
@@ -135,6 +150,7 @@ export interface FileRouteTypes {
     | '/browser-extension'
     | '/clipborder-landing-page'
     | '/blog-preview-card'
+    | '/ecommerce-product-page'
     | '/four-card-feature'
     | '/product-preview-card'
     | '/recipe'
@@ -146,6 +162,7 @@ export interface FileRouteTypes {
     | '/browser-extension'
     | '/clipborder-landing-page'
     | '/blog-preview-card'
+    | '/ecommerce-product-page'
     | '/four-card-feature'
     | '/product-preview-card'
     | '/recipe'
@@ -158,6 +175,7 @@ export interface RootRouteChildren {
   BrowserExtensionRoute: typeof BrowserExtensionRoute
   ClipborderLandingPageRoute: typeof ClipborderLandingPageRoute
   BlogPreviewCardLazyRoute: typeof BlogPreviewCardLazyRoute
+  EcommerceProductPageLazyRoute: typeof EcommerceProductPageLazyRoute
   FourCardFeatureLazyRoute: typeof FourCardFeatureLazyRoute
   ProductPreviewCardLazyRoute: typeof ProductPreviewCardLazyRoute
   RecipeLazyRoute: typeof RecipeLazyRoute
@@ -202,6 +220,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FourCardFeatureLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ecommerce-product-page': {
+      id: '/ecommerce-product-page'
+      path: '/ecommerce-product-page'
+      fullPath: '/ecommerce-product-page'
+      preLoaderRoute: typeof EcommerceProductPageLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog-preview-card': {
       id: '/blog-preview-card'
       path: '/blog-preview-card'
@@ -238,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   BrowserExtensionRoute: BrowserExtensionRoute,
   ClipborderLandingPageRoute: ClipborderLandingPageRoute,
   BlogPreviewCardLazyRoute: BlogPreviewCardLazyRoute,
+  EcommerceProductPageLazyRoute: EcommerceProductPageLazyRoute,
   FourCardFeatureLazyRoute: FourCardFeatureLazyRoute,
   ProductPreviewCardLazyRoute: ProductPreviewCardLazyRoute,
   RecipeLazyRoute: RecipeLazyRoute,
