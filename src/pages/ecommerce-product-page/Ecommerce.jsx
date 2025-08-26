@@ -1,7 +1,18 @@
 import './style.css';
 import Logo from './images/logo.svg';
+import MediaQuery, { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
+import { importImg } from './api';
 
 const Ecommerce = () => {
+  const [sideBarIsActive, setSidebarIsActive] = useState(true);
+  const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
+
+  const toggle = () => {
+    setSidebarIsActive(!sideBarIsActive);
+  }
+
+  console.log(isMobile && sideBarIsActive)
 
   return (
     <div>
@@ -9,14 +20,16 @@ const Ecommerce = () => {
 
       <header>
           <div className="left">
-            <div className="hamburger">
-              <img src={importImg('./images/icon-menu.svg')} alt="" />
-            </div>
+            <MediaQuery maxWidth={760}>
+              <div className="hamburger">
+                <img src={importImg('./images/icon-menu.svg')} onClick={toggle} alt="" />
+              </div>
+            </MediaQuery>
             <div className="logo">
                 <img src={Logo} alt="" />
             </div>
-            <nav>
-                <img className='close-nav' src={importImg('./images/icon-close.svg')} alt="" />
+            <nav className={isMobile && (sideBarIsActive ? 'sidebar' : '')}>
+                <img className='close-nav' onClick={toggle} src={importImg('./images/icon-close.svg')} alt="" />
                 <ul>
                   <li>Collections</li>
                   <li>Men</li>
@@ -39,6 +52,12 @@ const Ecommerce = () => {
             <img className='main-image' src={importImg('./images/image-product-1.jpg')} alt="Images" />
               <img className='image-nav prev' src={importImg('./images/icon-previous.svg')} alt="" />
               <img className='image-nav next' src={importImg('./images/icon-next.svg')} alt="" />
+          </div>
+          <div className="tumbnails">
+            <img src={importImg('./images/image-product-1-thumbnail.jpg')} alt="" />
+            <img src={importImg('./images/image-product-2-thumbnail.jpg')} alt="" />
+            <img src={importImg('./images/image-product-3-thumbnail.jpg')} alt="" />
+            <img src={importImg('./images/image-product-4-thumbnail.jpg')} alt="" />
           </div>
         </div>
         <div className="product-details flow">
@@ -67,17 +86,15 @@ const Ecommerce = () => {
               <button className='sub'><img src={importImg('./images/icon-plus.svg')} alt="" /></button>
             </div>
 
-            <button className='buy'>Add to cart</button>
+            <button className='buy'>
+              <img className="cart" src={importImg('./images/icon-cart.svg')} alt='cart'></img>
+              <span>Add to cart</span>
+              </button>
           </div>
         </div>
       </section>
     </div>
   );
-};
-
-// src/pages/ecommerce-product-page/images/image-product-1.jpg
-const importImg = (name) => {
-  return new URL(`${name}`, import.meta.url).href;
 };
 
 export default Ecommerce;

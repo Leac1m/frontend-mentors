@@ -14,6 +14,10 @@
     --neutral-800: hsl(0, 0%, 0%);
 
     --base-font-size: 1rem;
+    --break-point-1: 760px;
+    --break-point-2: 915px;
+
+    --header-large: 250%;
 }
 
 
@@ -24,7 +28,8 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1rem;
+    margin: 0 3rem;
+    padding-block: 3rem;
     border-bottom: 1px solid var(--blue-300);
     font-family: "Kumbh Sans";
 
@@ -32,18 +37,18 @@ header {
         display: flex;
         flex-flow: row wrap;
         align-items: center;
-        gap: 1rem;
+        gap: 2rem;
     }
 
     .right {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
+    }
 
-        img:last-child {
-            width: 30px;
-            height: 30px;
-        }
+    .profile {
+        width: 50px;
+        height: 50px;
     }
 
     .hamburger {
@@ -51,9 +56,21 @@ header {
     }
 
     @media  (width < 760px) {
+        padding: 1rem;
+        margin: 0;
         .hamburger {
-                display: block;
-            }
+            display: block;
+        }
+
+        .left, .right {
+            gap: 1rem;
+        }
+
+        .profile {
+            width: 30px;
+            height: 30px;
+        }
+        
     }
 
 }
@@ -80,9 +97,11 @@ nav {
         background-color: var(--neutral-0);
         position: absolute;
         top: 0;
-        left: -70%;
+        left: 0;
         width: 60%;
         height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
         padding: 1.5rem;
         font-weight: bold;
         font-size: 120%;
@@ -98,13 +117,32 @@ nav {
 
     }
 
-
 }
 
+.sidebar {
+    transform: translateX(0%);
+}
+
+.section {
+    display: grid;
+    max-width: 1200px;
+
+    @media (width > 760px) {
+        padding: 4rem;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 5rem;
+        align-items: center;
+        margin-inline: auto;
+    }
+
+    @media (width > 915px) {
+        --product-name-size: var(--header-large);
+    }
+}
 
 .buttons {
     display: grid;
-    grid-template-columns: var(var(--grid-columns), 1);
+    grid-template-columns: var(--buttons-grid-columns, 1);
     gap: 1rem;
 
    --button-padding: 1rem;
@@ -131,12 +169,23 @@ nav {
 
 
 .buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .8rem;
     background-color: var(--orange-500);
     cursor: pointer;
+    font-weight: bold;
+    font-size: large;
 }
 
 
 /** Product Images */
+.product-images {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
 
 .main-img {
     display: grid;
@@ -160,6 +209,16 @@ nav {
         grid-column: 1/4;
         grid-row: 1/2;
     }
+
+    @media (width > 760px) {
+        .next, .prev {
+            display: none;
+        }
+
+        .main-image {
+            border-radius: 0.75rem;
+        }
+    }
 }
 
 .image-nav {
@@ -168,6 +227,20 @@ nav {
     border-radius: 50%;
 }
 
+.tumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    img {
+        max-width: 100%;
+        border-radius: .75rem;
+    }
+
+    @media (width < 760px) {
+        display: none;        
+    }
+}
 
 
 
@@ -179,7 +252,7 @@ nav {
     color: var(--blue-500);
     display: flex;
     flex-flow: column nowrap;
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 1rem;
     font-family: "Kumbh Sans";
 
@@ -188,10 +261,16 @@ nav {
         font-size: medium;
         letter-spacing: 2px;
     }
+
+    @media (width > 1000px) {
+        --buttons-grid-columns: 1fr 2fr;
+        --price-grid-columns: 1fr;
+        --real-price-text-algin: left;
+    }
 }
 
 .product-name {
-    font-size: 200%;
+    font-size: var(--product-name-size, 200%);
     color: var(--neutral-800);
 }
 
@@ -201,7 +280,8 @@ nav {
 
 .prices {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: var(--price-grid-columns, 1fr 1fr);
+    row-gap: 1rem;
 
     .discount {
         display: flex;
@@ -224,7 +304,8 @@ nav {
     }
 
     .real-price {
-        text-align: right;
+        text-align: var(--real-price-text-algin, right);
+        text-decoration: line-through;
     }
 }
 
