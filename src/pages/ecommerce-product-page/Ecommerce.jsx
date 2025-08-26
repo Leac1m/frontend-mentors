@@ -1,8 +1,8 @@
 import './style.css';
-import React from 'react';
 import Logo from './images/logo.svg';
 
 const Ecommerce = () => {
+
   return (
     <div>
       <title>Frontend Mentor | E-commerce product page</title>
@@ -52,7 +52,8 @@ const Ecommerce = () => {
 
           <div className="prices">
             <div className="discount">
-              <p className="price">$125.00 <span className="discount-percent">50%</span></p>
+              <p className="price">$125.00 </p>
+              <p className="discount-percent">50%</p>
             </div>
             <div className="real-price">
               $250.00
@@ -61,9 +62,9 @@ const Ecommerce = () => {
 
           <div className="buttons">
             <div className="quantity">
-              <button><img src={importImg('./images/icon-minus.svg')} alt="" /></button>
+              <button className='add'><img src={importImg('./images/icon-minus.svg')} alt="" /></button>
               <div>0</div>
-              <button><img src={importImg('./images/icon-plus.svg')} alt="" /></button>
+              <button className='sub'><img src={importImg('./images/icon-plus.svg')} alt="" /></button>
             </div>
 
             <button className='buy'>Add to cart</button>

@@ -16,9 +16,7 @@
     --base-font-size: 1rem;
 }
 
-.flow > * + * {
-    margin-block-start: var(--flow-space, 1em);
-}
+
 
 /* Navigation */
 header {
@@ -26,7 +24,7 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 1rem;
     border-bottom: 1px solid var(--blue-300);
     font-family: "Kumbh Sans";
 }
@@ -34,18 +32,23 @@ header {
 header .left {
     display: flex;
     flex-flow: row wrap;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
 }
 
 header .right {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 
     img:last-child {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
     }
+}
+
+.hamburger {
+    display: none;
 }
 
 nav {
@@ -65,10 +68,11 @@ nav {
     
 
     @media (width < 760px) {
+        
         background-color: var(--neutral-0);
         position: absolute;
         top: 0;
-        left: 0;
+        left: -70%;
         width: 60%;
         height: 100vh;
         padding: 1.5rem;
@@ -89,10 +93,22 @@ nav {
 
 }
 
+@media  (width < 760px) {
+    .hamburger {
+            display: block;
+        }
+}
 
 .product-details {
+    --flow-space: .5em;
     padding: 1rem;
     font-family: "Kumbh Sans";
+
+    h2 {
+        text-transform: uppercase;
+        font-size: medium;
+        letter-spacing: 2px;
+    }
 }
 
 .buttons {
@@ -169,6 +185,9 @@ nav {
 
 .product-details {
     color: var(--blue-500);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
 }
 
 .product-name {
@@ -184,11 +203,18 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    .discount {
+        display: flex;
+        gap: 1.5rem;
+        font-weight: bold;
+    }
+
     .discount-percent {
         color: var(--neutral-0);
         background-color: var(--neutral-800);
-        padding: 4px;
-        border-radius: 2px;
+        border-radius: 8px;
+        margin-block: auto;
+        padding: 6px;
     }
 
     .price {
@@ -206,5 +232,3 @@ nav {
     display: grid;
     grid-template-columns: 30px auto 30px;
 }
-
-
