@@ -25,11 +25,11 @@ import Tumbnail2 from './images/image-product-2-thumbnail.jpg';
 import Tumbnail3 from './images/image-product-3-thumbnail.jpg';
 import Tumbnail4 from './images/image-product-4-thumbnail.jpg';
 
-
 const Ecommerce = () => {
   const [sideBarIsActive, setSidebarIsActive] = useState(true);
   const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
   const [focus, setFocus] = useState(0);
+  const [count, setcount] = useState(0);
   const productImages = [
     {
       id: 1,
@@ -51,61 +51,71 @@ const Ecommerce = () => {
       image: Product4,
       tumbnail: Tumbnail4,
     },
-  ]
+  ];
 
   const toggle = () => {
     setSidebarIsActive(!sideBarIsActive);
-  }
+  };
 
-  console.log(isMobile && sideBarIsActive)
+  console.log(isMobile && sideBarIsActive);
 
   return (
     <div>
       <title>Frontend Mentor | E-commerce product page</title>
 
       <header>
-          <div className="left">
-            <MediaQuery maxWidth={760}>
-              <div className="hamburger">
-                <img src={MenuIcon} onClick={toggle} alt="" />
-              </div>
-            </MediaQuery>
-            <div className="logo">
-                <img src={Logo} alt="" />
+        <div className="left">
+          <MediaQuery maxWidth={760}>
+            <div className="hamburger">
+              <img src={MenuIcon} onClick={toggle} alt="" />
             </div>
-            <nav className={isMobile && (sideBarIsActive ? 'sidebar' : '')}>
-                <img className='close-nav' onClick={toggle} src={CloseIcon} alt="" />
-                <ul>
-                  <li>Collections</li>
-                  <li>Men</li>
-                  <li>Women</li>
-                  <li>About</li>
-                  <li>Contact</li>
-                </ul>
-
-            </nav>
+          </MediaQuery>
+          <div className="logo">
+            <img src={Logo} alt="" />
           </div>
-              <div className='right'>
-                <img className="cart" src={CartIcon} alt='cart'></img>
-                <img className="profile" src={AvatarIcon}></img>
-              </div>
+          <nav className={isMobile && (sideBarIsActive ? 'sidebar' : '')}>
+            <img
+              className="close-nav"
+              onClick={toggle}
+              src={CloseIcon}
+              alt=""
+            />
+            <ul>
+              <li>Collections</li>
+              <li>Men</li>
+              <li>Women</li>
+              <li>About</li>
+              <li>Contact</li>
+            </ul>
+          </nav>
+        </div>
+        <div className="right">
+          <img className="cart" src={CartIcon} alt="cart"></img>
+          <img className="profile" src={AvatarIcon}></img>
+        </div>
       </header>
 
-      <section className='section'>
+      <section className="section">
         <div className="product-images">
           <div className="main-img">
-            <img className='main-image' src={productImages[focus].image} alt="Images" />
-              <img className='image-nav prev' src={PreviousIcon} alt="" />
-              <img className='image-nav next' src={NextIcon} alt="" />
+            <img
+              className="main-image"
+              src={productImages[focus].image}
+              alt="Images"
+            />
+            <img className="image-nav prev" src={PreviousIcon} alt="" />
+            <img className="image-nav next" src={NextIcon} alt="" />
           </div>
           <div className="tumbnails">
-            { productImages.map( (image, _idx) => (
-                <div className={_idx == focus ? 'focus' : ''}>
-                  <img 
-                  src={image.tumbnail} alt="" 
+            {productImages.map((image, _idx) => (
+              <div className={_idx == focus ? 'focus' : ''}>
+                <img
+                  key={image.id}
+                  src={image.tumbnail}
+                  alt=""
                   onClick={() => setFocus(_idx)}
-                  />
-                </div>
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -123,22 +133,34 @@ const Ecommerce = () => {
               <p className="price">$125.00 </p>
               <p className="discount-percent">50%</p>
             </div>
-            <div className="real-price">
-              $250.00
-            </div>
+            <div className="real-price">$250.00</div>
           </div>
 
           <div className="buttons">
             <div className="quantity">
-              <button className='add'><img src={MinusIcon} alt="" /></button>
-              <div>0</div>
-              <button className='sub'><img src={PlusIcon} alt="" /></button>
+              <button
+                className="sub"
+                onClick={() => {
+                  count && setcount(count - 1);
+                }}
+              >
+                <img src={MinusIcon} alt="" />
+              </button>
+              <div>{count}</div>
+              <button
+                className="add"
+                onClick={() => {
+                  setcount(count + 1);
+                }}
+              >
+                <img src={PlusIcon} alt="" />
+              </button>
             </div>
 
-            <button className='buy'>
-              <img className="cart" src={CartIcon} alt='cart'></img>
+            <button className="buy">
+              <img className="cart" src={CartIcon} alt="cart"></img>
               <span>Add to cart</span>
-              </button>
+            </button>
           </div>
         </div>
       </section>
