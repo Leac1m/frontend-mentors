@@ -14,10 +14,10 @@ import PlusIcon from './images/icon-plus.svg';
 import MinusIcon from './images/icon-minus.svg';
 
 // Product Images
-import Prudoct1 from './images/image-product-1.jpg';
-import Prudoct2 from './images/image-product-2.jpg';
-import Prudoct3 from './images/image-product-3.jpg';
-import Prudoct4 from './images/image-product-4.jpg';
+import Product1 from './images/image-product-1.jpg';
+import Product2 from './images/image-product-2.jpg';
+import Product3 from './images/image-product-3.jpg';
+import Product4 from './images/image-product-4.jpg';
 
 // Tumbnails
 import Tumbnail1 from './images/image-product-1-thumbnail.jpg';
@@ -29,6 +29,29 @@ import Tumbnail4 from './images/image-product-4-thumbnail.jpg';
 const Ecommerce = () => {
   const [sideBarIsActive, setSidebarIsActive] = useState(true);
   const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
+  const [focus, setFocus] = useState(0);
+  const productImages = [
+    {
+      id: 1,
+      image: Product1,
+      tumbnail: Tumbnail1,
+    },
+    {
+      id: 2,
+      image: Product2,
+      tumbnail: Tumbnail2,
+    },
+    {
+      id: 3,
+      image: Product3,
+      tumbnail: Tumbnail3,
+    },
+    {
+      id: 4,
+      image: Product4,
+      tumbnail: Tumbnail4,
+    },
+  ]
 
   const toggle = () => {
     setSidebarIsActive(!sideBarIsActive);
@@ -71,18 +94,22 @@ const Ecommerce = () => {
       <section className='section'>
         <div className="product-images">
           <div className="main-img">
-            <img className='main-image' src={Prudoct1} alt="Images" />
+            <img className='main-image' src={productImages[focus].image} alt="Images" />
               <img className='image-nav prev' src={PreviousIcon} alt="" />
               <img className='image-nav next' src={NextIcon} alt="" />
           </div>
           <div className="tumbnails">
-            <img src={Tumbnail1} alt="" />
-            <img src={Tumbnail2} alt="" />
-            <img src={Tumbnail3} alt="" />
-            <img src={Tumbnail4} alt="" />
+            { productImages.map( (image, _idx) => (
+                <div className={_idx == focus ? 'focus' : ''}>
+                  <img 
+                  src={image.tumbnail} alt="" 
+                  onClick={() => setFocus(_idx)}
+                  />
+                </div>
+            ))}
           </div>
         </div>
-        <div className="product-details flow">
+        <div className="product-details">
           <h2>Sneaker Company</h2>
           <h1 className="product-name">Fall Limited Edition Sneakers</h1>
           <p className="description">
