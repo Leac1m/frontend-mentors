@@ -2,7 +2,29 @@ import './style.css';
 import Logo from './images/logo.svg';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
-import { importImg } from './api';
+
+// Icons
+import MenuIcon from './images/icon-menu.svg';
+import CloseIcon from './images/icon-close.svg';
+import CartIcon from './images/icon-cart.svg';
+import AvatarIcon from './images/image-avatar.png';
+import PreviousIcon from './images/icon-previous.svg';
+import NextIcon from './images/icon-next.svg';
+import PlusIcon from './images/icon-plus.svg';
+import MinusIcon from './images/icon-minus.svg';
+
+// Product Images
+import Prudoct1 from './images/image-product-1.jpg';
+import Prudoct2 from './images/image-product-2.jpg';
+import Prudoct3 from './images/image-product-3.jpg';
+import Prudoct4 from './images/image-product-4.jpg';
+
+// Tumbnails
+import Tumbnail1 from './images/image-product-1-thumbnail.jpg';
+import Tumbnail2 from './images/image-product-2-thumbnail.jpg';
+import Tumbnail3 from './images/image-product-3-thumbnail.jpg';
+import Tumbnail4 from './images/image-product-4-thumbnail.jpg';
+
 
 const Ecommerce = () => {
   const [sideBarIsActive, setSidebarIsActive] = useState(true);
@@ -22,14 +44,14 @@ const Ecommerce = () => {
           <div className="left">
             <MediaQuery maxWidth={760}>
               <div className="hamburger">
-                <img src={importImg('./images/icon-menu.svg')} onClick={toggle} alt="" />
+                <img src={MenuIcon} onClick={toggle} alt="" />
               </div>
             </MediaQuery>
             <div className="logo">
                 <img src={Logo} alt="" />
             </div>
             <nav className={isMobile && (sideBarIsActive ? 'sidebar' : '')}>
-                <img className='close-nav' onClick={toggle} src={importImg('./images/icon-close.svg')} alt="" />
+                <img className='close-nav' onClick={toggle} src={CloseIcon} alt="" />
                 <ul>
                   <li>Collections</li>
                   <li>Men</li>
@@ -41,23 +63,23 @@ const Ecommerce = () => {
             </nav>
           </div>
               <div className='right'>
-                <img className="cart" src={importImg('./images/icon-cart.svg')} alt='cart'></img>
-                <img className="profile" src={importImg('./images/image-avatar.png')}></img>
+                <img className="cart" src={CartIcon} alt='cart'></img>
+                <img className="profile" src={AvatarIcon}></img>
               </div>
       </header>
 
       <section className='section'>
         <div className="product-images">
           <div className="main-img">
-            <img className='main-image' src={importImg('./images/image-product-1.jpg')} alt="Images" />
-              <img className='image-nav prev' src={importImg('./images/icon-previous.svg')} alt="" />
-              <img className='image-nav next' src={importImg('./images/icon-next.svg')} alt="" />
+            <img className='main-image' src={Prudoct1} alt="Images" />
+              <img className='image-nav prev' src={PreviousIcon} alt="" />
+              <img className='image-nav next' src={NextIcon} alt="" />
           </div>
           <div className="tumbnails">
-            <img src={importImg('./images/image-product-1-thumbnail.jpg')} alt="" />
-            <img src={importImg('./images/image-product-2-thumbnail.jpg')} alt="" />
-            <img src={importImg('./images/image-product-3-thumbnail.jpg')} alt="" />
-            <img src={importImg('./images/image-product-4-thumbnail.jpg')} alt="" />
+            <img src={Tumbnail1} alt="" />
+            <img src={Tumbnail2} alt="" />
+            <img src={Tumbnail3} alt="" />
+            <img src={Tumbnail4} alt="" />
           </div>
         </div>
         <div className="product-details flow">
@@ -81,13 +103,13 @@ const Ecommerce = () => {
 
           <div className="buttons">
             <div className="quantity">
-              <button className='add'><img src={importImg('./images/icon-minus.svg')} alt="" /></button>
+              <button className='add'><img src={MinusIcon} alt="" /></button>
               <div>0</div>
-              <button className='sub'><img src={importImg('./images/icon-plus.svg')} alt="" /></button>
+              <button className='sub'><img src={PlusIcon} alt="" /></button>
             </div>
 
             <button className='buy'>
-              <img className="cart" src={importImg('./images/icon-cart.svg')} alt='cart'></img>
+              <img className="cart" src={CartIcon} alt='cart'></img>
               <span>Add to cart</span>
               </button>
           </div>
